@@ -1,0 +1,35 @@
+{
+    "name": "khofaai/laraset",
+    "version": "0.2.0",
+    "description": "Module manager",
+    "keywords": ["laravel", "laraset", "php", "package", "module manager", "modular system", "laravel preset","vuejs","vue"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anas El Alami",
+            "email": "anaselalamikh@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "laravel/framework": "5.5.*"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Khofaai\\Laraset\\":"src/"
+        },
+        "files": [
+            "src/helpers/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Khofaai\\Laraset\\LarasetServiceProvider",
+                "Khofaai\\Laraset\\core\\Providers\\RouteServiceProvider"
+            ]
+        }
+    }
+}
