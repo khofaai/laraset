@@ -1,5 +1,5 @@
 # Laraset #
-[![Github All Releases](https://img.shields.io/github/downloads/khofaai/khofo/total.svg)](https://github.com/khofaai/khofo) [![Github Pre-Releases](https://img.shields.io/github/downloads-pre/khofaai/khofo/latest/total.svg)](https://github.com/khofaai/khofo) ![GitHub](https://img.shields.io/github/license/khofaai/khofo.svg) ![GitHub release](https://img.shields.io/github/release/khofaai/khofo.svg)
+[![Github All Releases](https://img.shields.io/github/downloads/khofaai/laraset/total.svg)](https://github.com/khofaai/laraset) [![Github Pre-Releases](https://img.shields.io/github/downloads-pre/khofaai/laraset/latest/total.svg)](https://github.com/khofaai/laraset) ![GitHub](https://img.shields.io/github/license/khofaai/laraset.svg) ![GitHub release](https://img.shields.io/github/release/khofaai/laraset.svg)
 
 this package is for [Laravel framework](https://laravel.com)
 
@@ -10,8 +10,6 @@ you can install by using :
 ### What is this repository for? ###
 
 * help you to organize you project directory architecture
-* 0.1.3
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
 ### How do I get set up? ###
 
