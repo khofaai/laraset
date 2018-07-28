@@ -2,7 +2,7 @@
 
 namespace Khofaai\Laraset\core\Commands;
 
-use Laraset;
+use Khofaai\Laraset\core\Facades\Laraset;
 use File;
 
 class LarasetMigrate extends LarasetCommands

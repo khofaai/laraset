@@ -3,7 +3,7 @@
 namespace Khofaai\Laraset\core\Commands;
 
 use Illuminate\Console\Command;
-use Laraset;
+use Khofaai\Laraset\core\Facades\Laraset;
 use File;
 
 abstract class LarasetCommands extends Command {

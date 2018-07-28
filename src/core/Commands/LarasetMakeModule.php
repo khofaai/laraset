@@ -2,7 +2,7 @@
 
 namespace Khofaai\Laraset\core\Commands;
 
-use Laraset,File;
+use Khofaai\Laraset\core\Facades\Laraset,File;
 
 class LarasetMakeModule extends LarasetCommands
 {
