@@ -4,8 +4,8 @@ namespace Khofaai\Laraset\core\Commands;
 
 use Khofaai\Laraset\core\Commands\LarasetCommands;
 
-use File,
-    Laraset;
+use Khofaai\Laraset\core\Facades\Laraset;
+use File;
 
 class LarasetInstall extends LarasetCommands {
 
