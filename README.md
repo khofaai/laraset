@@ -1,5 +1,5 @@
 # Laraset #
-[![Github All Releases](https://img.shields.io/github/downloads/khofaai/laraset/total.svg)](https://github.com/khofaai/laraset) [![Github Pre-Releases](https://img.shields.io/github/downloads-pre/khofaai/laraset/latest/total.svg)](https://github.com/khofaai/laraset) ![GitHub](https://img.shields.io/github/license/khofaai/laraset.svg) ![GitHub release](https://img.shields.io/github/release/khofaai/laraset.svg)
+![GitHub](https://img.shields.io/github/license/khofaai/laraset.svg) ![GitHub release](https://img.shields.io/github/release/khofaai/laraset.svg) [![Total Downloads](https://poser.pugx.org/khofaai/laraset/downloads)](https://packagist.org/packages/khofaai/laraset) [![Latest Stable Version](https://poser.pugx.org/khofaai/laraset/version)](https://packagist.org/packages/khofaai/laraset)
 
 this package is for [Laravel framework](https://laravel.com)
 
