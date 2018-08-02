@@ -1,4 +1,4 @@
-import DumpModuleNameUpper from './Components/app/DumpModuleName';
+import DumpModuleNameUpper from './Components/app/DumpModuleNameUpper';
 export default [
 	{
 		path:'/DumpModuleName',

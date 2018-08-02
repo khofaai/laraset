@@ -39,16 +39,16 @@ const __REQUEST__ = {
 		});
 	},
 	ajax_get(url,_obj) {
-		__REQUEST__.ajax_req(url,_obj,\"GET\");
+		__REQUEST__.ajax_req(url,_obj,"GET");
 	},
 	ajax_post(url,_obj) {
-		__REQUEST__.ajax_req(url,_obj,\"POST\");
+		__REQUEST__.ajax_req(url,_obj,"POST");
 	},
 	ajax_put(url,_obj) {
-		__REQUEST__.ajax_req(url,_obj,\"PUT\");
+		__REQUEST__.ajax_req(url,_obj,"PUT");
 	},
 	ajax_delete(url,_obj) {
-		__REQUEST__.ajax_req(url,_obj,\"DELETE\");
+		__REQUEST__.ajax_req(url,_obj,"DELETE");
 	},
 	ajax_req(url,_obj,_method) {
 		_obj.url = url;

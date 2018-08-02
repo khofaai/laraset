@@ -5,4 +5,4 @@ Core.map( file => {
 	if (file.enable) {
 		mix.js('app/laraset/'+file.src,'app/laraset/'+file.build);
 	}
-});"
+});

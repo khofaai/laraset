@@ -134,7 +134,7 @@ class LarasetMakeModule extends LarasetCommands
 			$files[] =  $this->fileData('Components/admin/admin_'.$modName.".vue","js/vuejs/component.vue", [ 'DumpModuleName' ],[ $modName ]);
 		}
 
-		$files[] =  $this->fileData('Controllers/'.$modNameToUpper."php","controller", [ 'DumpModuleName', 'DumpName' ], [ $modName, $modName ]);
+		$files[] =  $this->fileData('Controllers/'.ucfirst($modName)."php","controller", [ 'DumpModuleName', 'DumpName' ], [ $modName, $modName ]);
 		$files[] =  $this->fileData('route.php',"route.php.module", [ 'DumpModuleName' ], [ strtolower($modName) ]);
 
 		$this->makeModuleFiles($files);
