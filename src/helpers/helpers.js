@@ -10,7 +10,6 @@ const __SESSION__ = {
 
 const __EVENT__ = {
 	catch_event(event,callback) {
-
 		if (typeof Object.keys(this.$event._events)[event] === 'undefined') {
 			this.$event.$on(event,function(val){
 				callback(val);
@@ -18,21 +17,18 @@ const __EVENT__ = {
 		}
 	},
 	emit_event(event,params){
-
 		this.$event.$emit(event,params);
 	}
 };
 
 const __REQUEST__ = {
 	__request(_obj) {
-
 		if (typeof _obj.data === 'undefined') {
 			_obj.data = {}
 		}
 		if (typeof _obj.headers === 'undefined') {
 			_obj.headers = {}
 		}
-
 		axios({
 			method 	: _obj.method,
 			url		: _obj.url,
@@ -63,7 +59,6 @@ const __REQUEST__ = {
 	}
 }
 
-
 const __METHODS__ = {
 	methods:{
 		redirect(url) {
@@ -72,8 +67,8 @@ const __METHODS__ = {
 	}
 }
 
-const __HElPER_METHODS__ = Object.assign({},__EVENT__,__SESSION__,__REQUEST__);
+const __HELPER_METHODS__ = Object.assign({}, __EVENT__, __SESSION__, __REQUEST__);
 
 export const Helpers = {
-	methods: __HElPER_METHODS__
+	methods: __HELPER_METHODS__
 };
