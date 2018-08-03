@@ -1,10 +1,12 @@
 <?php
-
+/**
+ * Author : Anas EL ALAMI [anaselalamikh@gmail.com]
+ * github : khofaai
+ */
 namespace Khofaai\Laraset;
 
 use Illuminate\Support\ServiceProvider;
 use Khofaai\Laraset\core\Commands as LarasetCommandsCore;
-use Khofaai\Laraset\core\Facades\Laraset;
 
 class LarasetServiceProvider extends ServiceProvider
 {
@@ -16,9 +18,6 @@ class LarasetServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadCommands();
-        $this->app->bind('laraset', function() {
-            return new Laraset;
-        });
     }
 
     /**

@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Author : Anas EL ALAMI [anaselalamikh@gmail.com]
+ * github : khofaai
+ */
 use Khofaai\Laraset\core\Commands\LarasetCommands;
 use Khofaai\Laraset\core\Facades\Laraset;
 

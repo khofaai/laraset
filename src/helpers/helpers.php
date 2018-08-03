@@ -135,7 +135,7 @@ if (!function_exists('laraset_get_stub')) {
 
     function laraset_get_stub($name)
     {
-        $stub_path = laraset_path('core/Stubs/' . $name . '.stub');
+        $stub_path = laraset_path('core/resource/' . $name . '.stub');
         return file_exists($stub_path) ? $stub_path : null;
     }
 }

@@ -3,7 +3,7 @@
 
 This package is for [Laravel framework](https://laravel.com)
 
-## Installation for Laravel 5.5
+## Installation for Laravel 5.5 or Above
 
 You can get library through [composer](https://getcomposer.org/)
 
@@ -11,15 +11,13 @@ You can get library through [composer](https://getcomposer.org/)
 composer require khofaai/laraset
 ```
 
-To list all of modules run:
+To use Laraset you need to install it:
 
 ```
-php artisan araset:modules
+php artisan laraset:install
 ```
 
 Done!
-
-## Usage
 
 ### What is this repository for?
 

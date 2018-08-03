@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Author : Anas EL ALAMI [anaselalamikh@gmail.com]
+ * github : khofaai
+ */
 namespace Khofaai\Laraset\core\Commands;
 
 use File;
@@ -13,7 +16,7 @@ abstract class LarasetCommands extends Command
      * 
      * @var string
      */
-    protected $coreNamespace = "laraset";
+    protected $coreNamespace = "Laraset";
 
     /**
      * project base path 
@@ -232,6 +235,12 @@ abstract class LarasetCommands extends Command
      */
     protected function getStubFileContent($name)
     {
-        return File::get(Laraset::getStub($name));
+        try {
+            
+            return File::get(Laraset::getStub($name));
+        } catch (\Exception $e) {
+
+            $this->error('stub name : '.$name' not exist');
+        }
     }
 }
