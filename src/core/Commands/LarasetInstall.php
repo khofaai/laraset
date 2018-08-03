@@ -2,13 +2,12 @@
 
 namespace Khofaai\Laraset\core\Commands;
 
-use Khofaai\Laraset\core\Commands\LarasetCommands;
-
-use Khofaai\Laraset\core\Facades\Laraset;
 use File;
+use Khofaai\Laraset\core\Commands\LarasetCommands;
+use Khofaai\Laraset\core\Facades\Laraset;
 
-class LarasetInstall extends LarasetCommands {
-
+class LarasetInstall extends LarasetCommands
+{
     /**
      * The name and signature of the console command.
      *
@@ -32,7 +31,7 @@ class LarasetInstall extends LarasetCommands {
         'success' => '<options=bold;fg=cyan>[Laraset]<bg=black;fg=cyan> installed successfully',
         'warning' => '<options=bold,reverse>~Laraset~<fg=yellow> already installed.'
     ];
-    
+
     /**
      * Hold Laraset file structure
      * 
@@ -61,7 +60,8 @@ class LarasetInstall extends LarasetCommands {
     /**
      * @inheritdoc
      */
-    public function handle() {
+    public function handle()
+    {
         $this->updateInstallStatus();
     }
 
@@ -70,7 +70,8 @@ class LarasetInstall extends LarasetCommands {
      *
      * @return void
      */
-    protected function updateInstallStatus() {
+    protected function updateInstallStatus()
+    {
         $path = Laraset::path('core.json');
 
         if (File::exists($path)) {
@@ -99,7 +100,11 @@ class LarasetInstall extends LarasetCommands {
         }
     }
 
-    protected function generateArchitecture() {
+    /**
+     * Generate architecture
+     */
+    protected function generateArchitecture()
+    {
         $architecture = array(
             'assets' => '',
             'dist' => ['js' => ''],
@@ -115,7 +120,14 @@ class LarasetInstall extends LarasetCommands {
         $this->info('* [Folders] Generated Successfully !');
     }
 
-    protected function createArchitectureFolders($architecture, $path) {
+    /**
+     * Create architecture folders
+     *
+     * @param type $architecture
+     * @param type $path
+     */
+    protected function createArchitectureFolders($architecture, $path)
+    {
         foreach ($architecture as $key => $value) {
             $dir_path = $path . '/' . $key;
             $this->createFolder($dir_path);
@@ -127,14 +139,23 @@ class LarasetInstall extends LarasetCommands {
         }
     }
 
-    protected function createFolder($path) {
+    /**
+     * Create folder
+     *
+     * @param boolean
+     */
+    protected function createFolder($path)
+    {
         if (!is_dir($path)) {
-            File::makeDirectory($path);
+            return File::makeDirectory($path);
         }
     }
 
-    protected function generateFiles() {
-        
+    /**
+     * Generate Files
+     */
+    protected function generateFiles()
+    {
         $path = app_path($this->coreNamespace);
         foreach ($this->files as $key => $value) {
             foreach ($value as $filename => $stub) {
@@ -142,26 +163,24 @@ class LarasetInstall extends LarasetCommands {
                 $this->makeFile($dir_path . $filename, $this->getStubFileContent($stub));
             }
         }
-
-        $laraset_path = resource_path('views/'.$this->coreNamespace.'.blade.php');
+        $laraset_path = resource_path('views/' . $this->coreNamespace . '.blade.php');
         if (!File::exists($laraset_path)) {
             $this->makeFile($laraset_path, $this->getStubFileContent('template.blade'));
         }
-
         $this->info('* [File] Generated Successfully !');
     }
 
-    protected function updateWebpackMixJs() {
-
+    /**
+     * Update Webpack Mix Js
+     */
+    protected function updateWebpackMixJs()
+    {
         $path = base_path('webpack.mix.js');
-
         if (File::exists($path)) {
             $content = File::get($path);
             $this->makeFile(base_path('webpack-old.mix.js'), $content);
             File::delete($path);
         }
-
         $this->makeFile($path, $this->getStubFileContent('js/webpack.base.mix.js'));
     }
-
 }

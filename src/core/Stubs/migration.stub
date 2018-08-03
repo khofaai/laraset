@@ -28,4 +28,4 @@ class DumpMigrationName extends Migration
     {
         Schema::dropIfExists('DumpTableName');
     }
-}";
+}
