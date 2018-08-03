@@ -52,8 +52,8 @@ class LarasetInstall extends LarasetCommands {
             'helpers.php' => 'helpers.php'
         ],
         'modules' => [
-            'Core.vue' => 'js/vuejs/menu.vue',
-            'menu.vue' => 'js/vuejs/core.vue',
+            'Core.vue' => 'js/vuejs/core.vue',
+            'menu.vue' => 'js/vuejs/menu.vue',
             'topbar.vue' => 'js/vuejs/topbar.vue'
         ]
     ];

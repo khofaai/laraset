@@ -1,7 +1,7 @@
 require('./bootstrap');
 import router from './routes';
 
-/* Artivue MODULES */
+/* Laraset MODULES */
 
 window.Vue = require('vue');
 
