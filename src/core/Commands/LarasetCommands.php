@@ -2,12 +2,12 @@
 
 namespace Khofaai\Laraset\core\Commands;
 
+use File;
 use Illuminate\Console\Command;
 use Khofaai\Laraset\core\Facades\Laraset;
-use File;
 
-abstract class LarasetCommands extends Command {
-
+abstract class LarasetCommands extends Command
+{
     /**
      * This Core name
      * 
@@ -18,7 +18,7 @@ abstract class LarasetCommands extends Command {
     /**
      * project base path 
      * 
-     * @var String
+     * @var string
      */
     protected $basePath;
 
@@ -36,23 +36,27 @@ abstract class LarasetCommands extends Command {
 
     /**
      * Module name
-     * @var String
+     * @var string
      */
     protected $moduleName;
 
     /**
      * Module name with first Letter uppercase
-     * @var String
+     * @var string
      */
     protected $moduleNameUpper;
 
     /**
      * modules folder base path
-     * @var String
+     * @var string
      */
     protected $baseSrc;
 
-    public function __construct() {
+    /**
+     * 
+     */
+    public function __construct()
+    {
         $this->basePath = app_path($this->coreNamespace) . '/';
         parent::__construct();
     }
@@ -65,9 +69,10 @@ abstract class LarasetCommands extends Command {
     /**
      * Init module name in case is allowed
      * 
-     * @return Boolean
+     * @return boolean
      */
-    protected function init() {
+    protected function init()
+    {
         $this->initName();
         if (in_array(strtolower($this->moduleName), $this->notAllowedNames())) {
             $this->info('<options=bold;fg=yellow>[' . strtolower($this->moduleName) . ']<bg=black;fg=yellow> name is reserved ! please choose another one');
@@ -79,20 +84,22 @@ abstract class LarasetCommands extends Command {
     /**
      * Create File
      * 
-     * @param  String $path
-     * @param  String $content
+     * @param  string $path
+     * @param  string $content
      * @return void
      */
-    protected function makeFile($path, $content) {
+    protected function makeFile($path, $content)
+    {
         File::put($path, $content);
     }
 
     /**
      * return not allowed names
      * 
-     * @return Array
+     * @return array
      */
-    protected function notAllowedNames() {
+    protected function notAllowedNames()
+    {
         return [
             'admin'
         ];
@@ -103,7 +110,8 @@ abstract class LarasetCommands extends Command {
      * 
      * @return void
      */
-    protected function initName() {
+    protected function initName()
+    {
         $this->moduleName = $this->formatName($this->argument('name'));
         $this->moduleNameUpper = ucfirst(camel_case($this->moduleName));
 
@@ -114,10 +122,11 @@ abstract class LarasetCommands extends Command {
     /**
      * set option name to $commandOptions
      * 
-     * @param String $option
+     * @param string $option
      * @return void
      */
-    protected function setOption($option) {
+    protected function setOption($option)
+    {
         $optionValue = $this->option($option);
         $this->commandOptions[$option] = ($optionValue == 'default' ? false : (is_null($optionValue) ? true : $optionValue));
     }
@@ -125,19 +134,21 @@ abstract class LarasetCommands extends Command {
     /**
      * get option value
      * 
-     * @param  String $option option name
-     * @return Boolean/String ( String in case the option has value )
+     * @param  string $option option name
+     * @return boolean|string string in case the option has value
      */
-    protected function getOption($option) {
+    protected function getOption($option)
+    {
         return $this->commandOptions[$option];
     }
 
     /**
      * Set all command options to $commandOptions
      * 
-     * @param Array/String $option ( Array in case multiple options )
+     * @param array|string $option array in case multiple options
      */
-    protected function setCommandOption($option) {
+    protected function setCommandOption($option)
+    {
         if (is_array($option)) {
             foreach ($option as $opt) {
                 $this->setOption($opt);
@@ -150,20 +161,22 @@ abstract class LarasetCommands extends Command {
     /**
      * Remplace - with _
      * 
-     * @param  String $name
-     * @return String
+     * @param string $name
+     * @return string
      */
-    protected function formatName($name) {
+    protected function formatName($name)
+    {
         return str_replace('-', '_', $name);
     }
 
     /**
      * Create Directory
      * 
-     * @param  String $path
+     * @param  string $path
      * @return void
      */
-    protected function makeDir($path) {
+    protected function makeDir($path)
+    {
         File::makeDirectory($path, 0777, true, true);
     }
 
@@ -173,7 +186,8 @@ abstract class LarasetCommands extends Command {
      * @param  array $directories
      * @return void
      */
-    protected function makeDirectories($directories) {
+    protected function makeDirectories($directories)
+    {
         $this->makeDir($this->modulePath);
         foreach ($directories as $directory) {
             $this->makeDir($this->modulePath . '/' . $directory);
@@ -185,7 +199,8 @@ abstract class LarasetCommands extends Command {
      * 
      * @return qrray
      */
-    protected function modulesName() {
+    protected function modulesName()
+    {
         return array_keys(Laraset::modules());
     }
 
@@ -194,7 +209,8 @@ abstract class LarasetCommands extends Command {
      * 
      * @return string
      */
-    public function getSignature() {
+    public function getSignature()
+    {
         return $this->signature;
     }
 
@@ -203,7 +219,8 @@ abstract class LarasetCommands extends Command {
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
     }
 
@@ -213,8 +230,8 @@ abstract class LarasetCommands extends Command {
      * @param  string $name
      * @return string
      */
-    protected function getStubFileContent($name) {
+    protected function getStubFileContent($name)
+    {
         return File::get(Laraset::getStub($name));
     }
-
 }

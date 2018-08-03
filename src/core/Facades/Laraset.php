@@ -1,62 +1,130 @@
 <?php
+
 namespace Khofaai\Laraset\core\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 class Laraset extends Facade
 {
-	public static function getFacadeAccessor()
+    /**
+     * Get facade accessor
+     *
+     * @return string
+     */
+    public static function getFacadeAccessor()
     {
         return 'laraset';
     }
-	
-	public static function checkStrPos($el,$str) 
-	{	
-		return $el != '' && strpos($el,$str) !== false;
-	}
 
-	public static function path($path = '')
-	{
-		return laraset_path($path);
-	}
+    /**
+     * Check Str Pos
+     *
+     * @param string $el
+     * @param string $str
+     * @return boolean
+     */
+    public static function checkStrPos($el, $str)
+    {
+        return $el != '' && strpos($el, $str) !== false;
+    }
 
-	public static function modules()
-	{
-		return laraset_modules();
-	}
+    /**
+     * Get the path
+     *
+     * @param string $path
+     * @return string
+     */
+    public static function path($path = '')
+    {
+        return laraset_path($path);
+    }
 
-	public static function base($path = '')
-	{
-		return laraset_base($path);
-	}
+    /**
+     * Get the modules
+     *
+     * @return string
+     */
+    public static function modules()
+    {
+        return laraset_modules();
+    }
 
-	public static function asset($path = '')
-	{
-		return laraset_asset($path);
-	}
+    /**
+     * Get the base
+     *
+     * @param string $path
+     * @return string
+     */
+    public static function base($path = '')
+    {
+        return laraset_base($path);
+    }
 
-	public static function getStub($name)
-	{
-		return laraset_get_stub($name);
-	}
+    /**
+     * Get the asset
+     *
+     * @param string $path
+     * @return string
+     */
+    public static function asset($path = '')
+    {
+        return laraset_asset($path);
+    }
 
-	public function moduleExists($module_name)
-	{
-		return module_exists($module_name);
-	}
+    /**
+     * Get the stub
+     *
+     * @param string $name
+     * @return string
+     */
+    public static function getStub($name)
+    {
+        return laraset_get_stub($name);
+    }
 
-	public function modulePath($module_name)
-	{
-		return module_path($module_name);
-	}
+    /**
+     * Check if module exist
+     *
+     * @param string $moduleName
+     * @return boolean
+     */
+    public function moduleExists($moduleName)
+    {
+        return module_exists($moduleName);
+    }
 
-	public function dirStructure($path = null,$subdir = '',$subpath = '')
-	{
-		return dir_structure($path = null,$subdir,$subpath);
-	}
+    /**
+     * Get the module path
+     *
+     * @param string $moduleName
+     * @return string
+     */
+    public function modulePath($moduleName)
+    {
+        return module_path($moduleName);
+    }
 
-	public function getFilePhpClasses($filepath)
-	{
-		return file_get_php_classes($filepath);
-	}
+    /**
+     * Get the directory structure
+     *
+     * @param string $path
+     * @param string $subdir
+     * @param string $subpath
+     * @return array
+     */
+    public function dirStructure($path = null, $subdir = '', $subpath = '')
+    {
+        return dir_structure($path = null, $subdir, $subpath);
+    }
+
+    /**
+     * Get file php classes
+     *
+     * @param string $filepath
+     * @return string
+     */
+    public function getFilePhpClasses($filepath)
+    {
+        return file_get_php_classes($filepath);
+    }
 }

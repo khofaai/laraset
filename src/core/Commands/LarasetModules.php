@@ -1,23 +1,26 @@
 <?php
 
-namespace Khofaai\Laraset\core\Commands;
-
+use Khofaai\Laraset\core\Commands\LarasetCommands;
 use Khofaai\Laraset\core\Facades\Laraset;
 
-class LarasetModules extends LarasetCommands {
+namespace Khofaai\Laraset\core\Commands;
+
+class LarasetModules extends LarasetCommands
+{
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
     protected $signature = 'laraset:modules';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'list all modules';
-    
+
     /**
      * @inheritdoc
      */
@@ -33,6 +36,6 @@ class LarasetModules extends LarasetCommands {
             ];
         }
 
-        $this->table(['name','installed','created date'],$modules);
+        $this->table(['name', 'installed', 'created date'], $modules);
     }
 }
