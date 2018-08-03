@@ -12,4 +12,4 @@
 	</main>
 	<script type='text/javascript' src='{{ laraset_asset("dist/js/core.js"); }}'></script>
 </body>
-</html>"
+</html>
