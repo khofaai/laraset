@@ -1,23 +1,39 @@
 # Laraset #
 ![GitHub](https://img.shields.io/github/license/khofaai/laraset.svg) ![GitHub release](https://img.shields.io/github/release/khofaai/laraset.svg) [![Total Downloads](https://poser.pugx.org/khofaai/laraset/downloads)](https://packagist.org/packages/khofaai/laraset) [![Latest Stable Version](https://poser.pugx.org/khofaai/laraset/version)](https://packagist.org/packages/khofaai/laraset)
 
-this package is for [Laravel framework](https://laravel.com)
+This package is for [Laravel framework](https://laravel.com)
 
-you can install by using :
+## Installation for Laravel 5.5
 
-	composer require "khofaai/laraset"
+You can get library through [composer](https://getcomposer.org/)
 
-### What is this repository for? ###
+```
+composer require khofaai/laraset
+```
 
-* help you to organize you project directory architecture
+To list all of modules run:
 
-### How do I get set up? ###
+```
+php artisan araset:modules
+```
 
-* no configuration needed
-* need vuejs installed
+Done!
 
-### Who do I talk to? ###
+## Usage
+
+### What is this repository for?
+
+* Help you to organize your project directory architecture
+
+### How do I get set up?
+
+* No configuration needed
+* Need vuejs installed
+
+### Who do I talk to?
 
 * Repo owner or admin
 * Other community or team contact
-this package is for [Laravel framework](https://laravel.com)
+
+## License
+[MIT](LICENSE)
