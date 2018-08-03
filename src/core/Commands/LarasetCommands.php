@@ -96,7 +96,7 @@ abstract class LarasetCommands extends Command
     /**
      * return not allowed names
      * 
-     * @return Array
+     * @return array
      */
     protected function notAllowedNames()
     {
@@ -145,7 +145,7 @@ abstract class LarasetCommands extends Command
     /**
      * Set all command options to $commandOptions
      * 
-     * @param Array/string $option ( Array in case multiple options )
+     * @param array|string $option array in case multiple options
      */
     protected function setCommandOption($option)
     {

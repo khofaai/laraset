@@ -104,8 +104,8 @@ class LarasetMakeModule extends LarasetCommands
      * 
      * @param  string $filename
      * @param  string $stub
-     * @param  Array $toReplace
-     * @param  Array $replaceWith
+     * @param  array $toReplace
+     * @param  array $replaceWith
      * @return void
      */
     protected function fileData($filename, $stub, $toReplace, $replaceWith)
@@ -192,7 +192,7 @@ class LarasetMakeModule extends LarasetCommands
     /** 	
      * generate files
      * 
-     * @param  Array $targets
+     * @param  array $targets
      * @return void
      */
     protected function makeModuleFiles($targets)

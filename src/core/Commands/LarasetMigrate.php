@@ -52,7 +52,7 @@ class LarasetMigrate extends LarasetCommands
     /**
      * fetch migration files 
      * 
-     * @param  Array $files
+     * @param  array $files
      * @return void
      */
     protected function fetchMigrationFiles($files)
