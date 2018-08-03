@@ -3,20 +3,13 @@
 namespace Khofaai\Laraset;
 
 use Illuminate\Support\ServiceProvider;
-use Khofaai\Laraset\core\Commands\LarasetDelete;
-use Khofaai\Laraset\core\Commands\LarasetInstall;
-use Khofaai\Laraset\core\Commands\LarasetMakeController;
-use Khofaai\Laraset\core\Commands\LarasetMakeMigration;
-use Khofaai\Laraset\core\Commands\LarasetMakeModel;
-use Khofaai\Laraset\core\Commands\LarasetMakeModule;
-use Khofaai\Laraset\core\Commands\LarasetMigrate;
-use Khofaai\Laraset\core\Commands\LarasetModules;
+use Khofaai\Laraset\core\Commands as LarasetCommandsCore;
 use Khofaai\Laraset\core\Facades\Laraset;
 
 class LarasetServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * Bootstrap any application services
      *
      * @return void
      */
@@ -37,14 +30,14 @@ class LarasetServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                LarasetDelete::class,
-                LarasetInstall::class,
-                LarasetMakeController::class,
-                LarasetMakeMigration::class,
-                LarasetMakeModel::class,
-                LarasetMakeModule::class,
-                LarasetModules::class,
-                LarasetMigrate::class
+                LarasetCommandsCore\LarasetDelete::class,
+                LarasetCommandsCore\LarasetInstall::class,
+                LarasetCommandsCore\LarasetMakeController::class,
+                LarasetCommandsCore\LarasetMakeMigration::class,
+                LarasetCommandsCore\LarasetMakeModel::class,
+                LarasetCommandsCore\LarasetMakeModule::class,
+                LarasetCommandsCore\LarasetModules::class,
+                LarasetCommandsCore\LarasetMigrate::class
             ]);
         }
     }
