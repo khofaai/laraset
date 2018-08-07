@@ -1,12 +1,12 @@
 {
+    "version": "0.3.4",
+    "name": "khofaai/laraset",
     "authors": [
         {
             "name": "Anas El Alami",
             "email": "anaselalamikh@gmail.com"
         }
     ],
-    "name": "khofaai/laraset",
-    "version": "0.3.4",
     "license": "MIT",
     "description": "Module manager",
     "keywords": ["laravel", "laraset", "php", "package", "module manager", "modular system", "laravel preset","vuejs","vue"],
