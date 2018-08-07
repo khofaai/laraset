@@ -137,11 +137,11 @@ class LarasetMakeModule extends LarasetCommands
         if ($this->getOption('with-admin')) {
             $files[] = $this->fileData('Components/admin/admin_' . $modName . ".vue", "js/vuejs/component.vue", ['DumpModuleName'], [$modName]);
         }
-        $files[] = $this->fileData('Controllers/' . ucfirst($modName) . "php", "controller", ['DumpModuleName', 'DumpName'], [$modName, $modName]);
+        $files[] = $this->fileData('Controllers/' . ucfirst($modName) . "Controller.php", "controller", ['DumpModuleName', 'DumpName'], [$modName, $modName]);
         $files[] = $this->fileData('route.php', "route.php.module", ['DumpModuleName'], [strtolower($modName)]);
         $this->makeModuleFiles($files);
         $option_tpl = $this->getOption('tpl');
-        if ($option_tpl && !file_exists(resource_path('views/' . $option_tpl . '.blade.php'))) {
+        if ($option_tpl && !File::exists(resource_path('views/' . $option_tpl . '.blade.php'))) {
             $this->makeFile(resource_path('views/' . $option_tpl . '.blade.php'), $this->getStubFileContent('template.blade'));
         }
     }

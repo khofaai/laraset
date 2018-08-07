@@ -3,10 +3,10 @@
  * Author : Anas EL ALAMI [anaselalamikh@gmail.com]
  * github : khofaai
  */
+namespace Khofaai\Laraset\core\Commands;
+
 use Khofaai\Laraset\core\Commands\LarasetCommands;
 use Khofaai\Laraset\core\Facades\Laraset;
-
-namespace Khofaai\Laraset\core\Commands;
 
 class LarasetModules extends LarasetCommands
 {
