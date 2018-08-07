@@ -13,8 +13,7 @@
     "require": {
         "php": ">=7.0.0",
         "illuminate/console" : "~5.5",
-        "illuminate/support" : "~5.5",
-        "illuminate/foundation" : "~5.5"
+        "illuminate/support" : "~5.5"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
