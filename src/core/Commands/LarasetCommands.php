@@ -240,7 +240,7 @@ abstract class LarasetCommands extends Command
             return File::get(Laraset::getStub($name));
         } catch (\Exception $e) {
 
-            $this->error('stub name : '.$name' not exist');
+            $this->error('stub name : '.$name.' not exist');
         }
     }
 }
