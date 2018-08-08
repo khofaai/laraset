@@ -157,7 +157,7 @@ abstract class LarasetCommands extends Command
                 $this->setOption($opt);
             }
         } else {
-            $this->setOption($opt);
+            $this->setOption($option);
         }
     }
 

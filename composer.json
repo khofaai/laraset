@@ -15,7 +15,9 @@
     "require": {
         "php": ">=7.0.0",
         "illuminate/console" : "~5.5",
-        "illuminate/support" : "~5.5"
+        "illuminate/support" : "~5.5",
+        "illuminate/database" : "~5.5",
+        "illuminate/http" : "~5.5"
     },
     "autoload": {
         "psr-4": {

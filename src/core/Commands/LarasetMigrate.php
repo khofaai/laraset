@@ -16,7 +16,7 @@ class LarasetMigrate extends LarasetCommands
      * @var string
      */
     protected $signature = 'laraset:migrate
-	{--sync=default}';
+    {--no-sync=default}';
 
     /**
      * The console command description.
@@ -30,9 +30,10 @@ class LarasetMigrate extends LarasetCommands
      */
     public function handle()
     {
-        $this->setCommandOption('sync');
+        $this->setCommandOption('no-sync');
         $this->loadMigrationPaths();
-        if ($this->getOption('sync')) {
+
+        if (!$this->getOption('no-sync')) {
             $this->mappingMigrationDirectories();
         }
         $this->call('migrate');
@@ -98,7 +99,7 @@ class LarasetMigrate extends LarasetCommands
      */
     protected function mappingMigrationDirectories()
     {
-        $tree = dir_structure(core_path('modules'), 'Database');
+        $tree = dir_structure(Laraset::base('modules'), 'Database');
 
         foreach ($tree['directories'] as $element) {
             $path = $element['directories']['Migrations']['path'];
@@ -113,9 +114,7 @@ class LarasetMigrate extends LarasetCommands
         foreach ($migration_tree['files'] as $file) {
             foreach ($files as $path => $local_files) {
                 foreach ($local_files as $key => $old_file) {
-                    if (strpos($file, $old_file) !== false) {
-                        $this->synchFile($path, $old_file);
-                    }
+                    $this->synchFile($path, $old_file);
                 }
             }
         }
@@ -132,12 +131,16 @@ class LarasetMigrate extends LarasetCommands
     {
         $migrationPath = database_path('migrations') . '/' . $filename;
         $moduleMigrationPath = $path . $filename;
-        if (md5(File::get($moduleMigrationPath)) != md5(File::get($migrationPath))) {
+        if (!File::exists($migrationPath) && File::exists($moduleMigrationPath)) {
+            File::copy($moduleMigrationPath, $migrationPath);
+            $this->info('   Migration file [ ' . $filename . ' ] synchronized successfully !');
+        } elseif (md5(File::get($moduleMigrationPath)) != md5(File::get($migrationPath))) {
             if (File::exists($migrationPath)) {
                 File::delete($migrationPath);
             }
             File::copy($moduleMigrationPath, $migrationPath);
             $this->info('   Migration file [ ' . $filename . ' ] synchronized successfully !');
         }
+        
     }
 }

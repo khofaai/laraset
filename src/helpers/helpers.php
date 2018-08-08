@@ -12,7 +12,7 @@ if (!function_exists(('laraset_modules'))) {
 
     function laraset_modules()
     {
-        return json_decode(file_get_contents(app_path('laraset') . '/core.json'), true)['modules'];
+        return json_decode(file_get_contents(app_path('Laraset') . '/core.json'), true)['modules'];
     }
 }
 
@@ -20,7 +20,7 @@ if (!function_exists(('laraset_base'))) {
 
     function laraset_base($path = '')
     {
-        return app_path('laraset') . '/' . $path;
+        return app_path('Laraset') . '/' . $path;
     }
 }
 
@@ -28,7 +28,7 @@ if (!function_exists(('laraset_asset'))) {
 
     function laraset_asset($path = '')
     {
-        return url('app/laraset') . '/' . $path;
+        return url('app/Laraset') . '/' . $path;
     }
 }
 
@@ -37,7 +37,8 @@ if (!function_exists('module_exists')) {
     function module_exists($module_name)
     {
         $path = laraset_base('modules/' . $module_name);
-        return file_exists($path) ? $path : false;
+
+        return is_dir($path) ? $path : false;
     }
 }
 
@@ -137,5 +138,30 @@ if (!function_exists('laraset_get_stub')) {
     {
         $stub_path = laraset_path('core/resource/' . $name . '.stub');
         return file_exists($stub_path) ? $stub_path : null;
+    }
+}
+
+if (!function_exists('class_exists_in_directory')) {
+    
+    function class_exists_in_directory($path,$class_name) {
+        $dir = dir_structure($path);
+
+        $class_exists = false;
+        if (isset($dir['files'])) {
+            # code...
+            foreach ($dir['files'] as $file) {
+            
+                $path = $dir['path'].$file;
+                $classNames = get_php_classes(file_get_contents($path));
+            
+                if (in_array($class_name, $classNames)) {
+            
+                    $class_exists = true;
+                    break;
+                }
+            }
+        }
+
+        return $class_exists;
     }
 }
