@@ -57,7 +57,7 @@ class LarasetMakeModel extends LarasetCommands
 
     private function createFile()
     {
-        $path = $this->_src . $this->moduleName . '/Database/Models/' . $this->moduleNameUpper . '.php';
+        $path = $this->baseSrc . $this->moduleName . '/Database/Models/' . $this->moduleNameUpper . '.php';
 
         if (File::exists($path)) {
             $this->comment("[ " . $this->moduleNameUpper . ' ] controller already exist !');
