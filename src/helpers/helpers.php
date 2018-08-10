@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Path to laraset vendor package for given $path
+ * 
+ * @param  string $path
+ * @return string
+ */
 if (!function_exists('laraset_path')) {
 
     function laraset_path($path = '')
@@ -8,6 +13,11 @@ if (!function_exists('laraset_path')) {
     }
 }
 
+/**
+ * List all created modules
+ * 
+ * @return string
+ */
 if (!function_exists(('laraset_modules'))) {
 
     function laraset_modules()
@@ -16,32 +26,55 @@ if (!function_exists(('laraset_modules'))) {
     }
 }
 
+/**
+ * Path to Laraset directory inside app folder
+ * 
+ * @param  string $path
+ * @return string
+ */
 if (!function_exists(('laraset_base'))) {
 
     function laraset_base($path = '')
     {
-        return app_path('Laraset') . '/' . $path;
+        return app_path('Laraset' . ( $path != '' ? '/' . $path : '' ) );
     }
 }
 
+/**
+ * Url to Laraset directory inside App folder
+ * 
+ * @param  string $path
+ * @return string
+ */
 if (!function_exists(('laraset_asset'))) {
 
     function laraset_asset($path = '')
     {
-        return url('app/Laraset') . '/' . $path;
+        return url('app/Laraset' . ($path != '' ? '/' . $path : '' ) );
     }
 }
 
+/**
+ * Check if given module name exist
+ * 
+ * @param  string $module_name
+ * @return boolean
+ */
 if (!function_exists('module_exists')) {
 
     function module_exists($module_name)
     {
         $path = laraset_base('modules/' . $module_name);
-
         return is_dir($path) ? $path : false;
     }
 }
 
+/**
+ * Path to given module name
+ * 
+ * @param  string $module_name
+ * @return boolean | null
+ */
 if (!function_exists('module_path')) {
 
     function module_path($module_name)
@@ -52,11 +85,18 @@ if (!function_exists('module_path')) {
     }
 }
 
+/**
+ * construct directory architecture
+ * 
+ * @param  string $path
+ * @param  string $subdir
+ * @param  string $subpath
+ * @return array | null
+ */
 if (!function_exists('dir_structure')) {
 
     function dir_structure($path = null, $subdir = '', $subpath = '')
     {
-
         $bt = debug_backtrace();
         $dirname = dirname($bt[0]['file']);
         if (!is_null($path)) {
@@ -66,10 +106,10 @@ if (!function_exists('dir_structure')) {
         if (is_dir($dirname)) {
 
             $dirname = str_finish($dirname, '/');
-            $dir_path = str_finish(str_replace($subpath, '', $dirname), '/');
+            $dirPath = str_finish(str_replace($subpath, '', $dirname), '/');
 
             $structure = [
-                'path' => $subpath != '' ? $dir_path : $dirname,
+                'path' => $subpath != '' ? $dirPath : $dirname,
                 'directories' => [],
                 'files' => []
             ];
@@ -81,20 +121,17 @@ if (!function_exists('dir_structure')) {
             foreach ($directory as $filename) {
                 // not including this file
                 if (basename($dirname) != $filename) {
-
-                    $base_file_path = $filename;
+                    $baseFilePath = $filename;
                     if ($subdir != '') {
-                        $base_file_path .= '/' . $subdir;
+                        $baseFilePath .= '/' . $subdir;
                     }
                     // get each file location
-                    $file_path = $dirname . $base_file_path;
+                    $filePath = $dirname . $baseFilePath;
                     // check if this is a file or directory
-                    if (is_file($file_path)) {
-
-                        array_push($structure['files'], $base_file_path);
-                    } elseif (is_dir($file_path)) {
-
-                        $structure['directories'][$filename] = dir_structure($file_path);
+                    if (is_file($filePath)) {
+                        array_push($structure['files'], $baseFilePath);
+                    } elseif (is_dir($filePath)) {
+                        $structure['directories'][$filename] = dir_structure($filePath);
                     }
                 }
             }
@@ -104,64 +141,86 @@ if (!function_exists('dir_structure')) {
     }
 }
 
-if (!function_exists('file_get_php_classes')) {
-
-    function file_get_php_classes($filepath)
-    {
-        $php_code = file_get_contents($filepath);
-        $classes = get_php_classes($php_code);
-        return $classes;
-    }
-}
-
+/**
+ * Get classes in a Php file Content
+ * 
+ * @param  string $phpCode
+ * @return array
+ */
 if (!function_exists('get_php_classes')) {
 
-    function get_php_classes($php_code)
+    function get_php_classes($phpCode)
     {
         $classes = array();
-        $tokens = token_get_all($php_code);
+        $tokens = token_get_all($phpCode);
         $count = count($tokens);
         for ($i = 2; $i < $count; $i++) {
             if ($tokens[$i - 2][0] == T_CLASS && $tokens[$i - 1][0] == T_WHITESPACE && $tokens[$i][0] == T_STRING) {
 
-                $class_name = $tokens[$i][1];
-                $classes[] = $class_name;
+                $className = $tokens[$i][1];
+                $classes[] = $className;
             }
         }
         return $classes;
     }
 }
 
+/**
+ * Get classes in a Php file
+ * 
+ * @param  string $filepath
+ * @return array
+ */
+if (!function_exists('file_get_php_classes')) {
+
+    function file_get_php_classes($filepath)
+    {
+        $phpCode = file_get_contents($filepath);
+        $classes = get_php_classes($phpCode);
+        return $classes;
+    }
+}
+
+/**
+ * Get stub file path
+ * 
+ * @param  string $name
+ * @return string | null
+ */
 if (!function_exists('laraset_get_stub')) {
 
     function laraset_get_stub($name)
     {
-        $stub_path = laraset_path('core/resource/' . $name . '.stub');
-        return file_exists($stub_path) ? $stub_path : null;
+        $stubPath = laraset_path('core/resource/' . $name . '.stub');
+        return file_exists($stubPath) ? $stubPath : null;
     }
 }
 
+/**
+ * Check if a given class name exist in given path directory
+ * 
+ * @param  string $path
+ * @param  string $className
+ * @return boolean
+ */
 if (!function_exists('class_exists_in_directory')) {
     
-    function class_exists_in_directory($path,$class_name) {
+    function class_exists_in_directory($path,$className) {
         $dir = dir_structure($path);
-
-        $class_exists = false;
+        $classExists = false;
         if (isset($dir['files'])) {
             # code...
             foreach ($dir['files'] as $file) {
             
                 $path = $dir['path'].$file;
                 $classNames = get_php_classes(file_get_contents($path));
-            
-                if (in_array($class_name, $classNames)) {
-            
-                    $class_exists = true;
+
+                if (in_array($className, $classNames)) {
+                    $classExists = true;
                     break;
                 }
             }
         }
-
-        return $class_exists;
+        return $classExists;
     }
 }

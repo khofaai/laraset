@@ -71,7 +71,7 @@ const __METHODS__ = {
     }
 };
 
-const __HELPER_METHODS__ = Object.assign({}, __EVENT__, __SESSION__, __REQUEST__);
+const __HELPER_METHODS__ = Object.assign( {}, __EVENT__, __SESSION__, __REQUEST__ );
 
 export const Helpers = {
     methods: __HELPER_METHODS__
