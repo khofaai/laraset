@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 class DumpNameController extends Controller
 {
-    //
-    public function __construct()
-    {
-        // #code
-    }
-
+    /**
+	 * Get the fields displayed by the resource.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return mixed
+	 */
     public function index(Request $request)
     {
         // #code

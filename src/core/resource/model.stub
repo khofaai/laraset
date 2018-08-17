@@ -1,6 +1,6 @@
 <?php
 
-namespace Khofaai\Laraset\modules\DumpModuleName\Database\Models;
+namespace App\Laraset\modules\DumpModuleName\Database\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
