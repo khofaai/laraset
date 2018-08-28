@@ -1,2 +1,0 @@
-# License
-[MIT](LICENSE)

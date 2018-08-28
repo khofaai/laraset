@@ -117,7 +117,7 @@ class Laraset extends Facade
      */
     public static function dirStructure($path = null, $subdir = '', $subpath = '')
     {
-        return dir_structure($path = null, $subdir, $subpath);
+        return dir_structure($path, $subdir, $subpath);
     }
 
     /**

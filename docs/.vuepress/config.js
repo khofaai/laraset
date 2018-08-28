@@ -1,9 +1,8 @@
 module.exports = {
   // title: 'Laravel Nova',
-  title: '~@~ Laraset',
+  title: 'Laraset',
   description: 'Master Your Universe',
   base: '/docs/',
-
   head: [
     [
       'link',
@@ -22,12 +21,12 @@ module.exports = {
     sidebarDepth: 1,
 
     nav: [
-      {text: 'Home', link: '#'},
+      {text: 'Home', link: '/1.0/'},
       // {text: 'Version', link: '/', items: [{text: '1.0', link: '/1.0/'}]},
     ],
 
     sidebar: {
-      '/1.0/': require('./1.0'),
-    },
+      "/":require('./1.0')
+    } 
   },
 };

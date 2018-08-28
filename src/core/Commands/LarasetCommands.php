@@ -11,6 +11,7 @@ use Khofaai\Laraset\core\Facades\Laraset;
 
 abstract class LarasetCommands extends Command
 {
+    const CORE_NAME = 'modules';
     /**
      * This Core name
      * 
@@ -118,7 +119,7 @@ abstract class LarasetCommands extends Command
         $this->moduleName = $this->formatName($this->argument('name'));
         $this->moduleNameUpper = ucfirst(camel_case($this->moduleName));
 
-        $this->baseSrc = $this->basePath . 'modules/';
+        $this->baseSrc = $this->basePath . self::CORE_NAME.'/';
         $this->modulePath = $this->baseSrc . $this->moduleName;
     }
 
@@ -240,7 +241,7 @@ abstract class LarasetCommands extends Command
             return File::get(Laraset::getStub($name));
         } catch (\Exception $e) {
 
-            $this->error('stub name : '.$name.' not exist');
+            $this->error("stub name : ${$name} not exist");
         }
     }
 }

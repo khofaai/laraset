@@ -2,14 +2,23 @@ module.exports = [
   {
     title: 'Getting Started',
     collapsable: false,
-    children: ['installation'],
+    children: [
+      '/1.0/' 
+    ],
   },
   {
-    title: 'Resources',
+    title: 'Basics',
     collapsable: false,
-    children: prefix('resources', [
+    children: prefix('/1.0/basics', [
       '',
-      'commands',
+      'units',
+    ]),
+  },
+  {
+    title: 'Commands',
+    collapsable: false,
+    children: prefix('/1.0/commands', [
+      '',
     ]),
   }
 ]

@@ -1,5 +1,8 @@
+$glbColor = #fb5135
+$scdColor = #333
+
 body
-  background-color #f4f4f4
+  background-color #f1eae1
   font-family "Nunito"
 
 /* Headings
@@ -14,6 +17,12 @@ h1
 h2
   border-bottom 0
 
+th, td
+  border: 1px solid #9f9f9f;
+.navbar, .navbar .links, .search-box input
+  background-color: #f1eae1
+.search-box input:focus
+  background-color: #fff
 /* Page
 -----------------------------------------------------------------------------*/
 @media (min-width 719px)
@@ -35,7 +44,7 @@ h2
 .navbar
   z-index 500
   border-bottom none
-  box-shadow 0 2px 4px 0 rgba(0, 0, 0, .05)
+  box-shadow 0 2px 4px 0 rgba(51, 51, 51, .3)
 
 .navbar .logo
   width 165.37px
@@ -50,7 +59,7 @@ h2
     width 13.75rem
     border-right none
     background-color transparent
-    background-image linear-gradient(0deg, #e19f91 0%, #d86b54 100%)
+    background-image linear-gradient(0deg, darken($glbColor,30%) -50%, $glbColor 100%)
 
   .sidebar-heading
     padding 0 1.7rem
@@ -81,12 +90,7 @@ h2
     border-left-color rgba(255, 255, 255, 0.5)
 
   a.sidebar-link.active
-    background-color: rgba(0,0,0,0.1);
-    border-left-color: #cc391a;
-    color: #fff;
-
-  .sidebar-sub-header a.sidebar-link.active
-    background-color: rgba(0,0,0,0.3);
+    border-left-color: #fff;
 
   .sidebar-group a.sidebar-link
     padding-left 1.5rem
@@ -129,6 +133,7 @@ h4 .header-anchor:hover,
 h5 .header-anchor:hover,
 h6 .header-anchor:hover
   text-decoration none !important
+  color $glbColor
 
 .content:not(.custom)
   padding 4rem 2.5rem 1rem
@@ -174,7 +179,7 @@ h6 .header-anchor:hover
 -----------------------------------------------------------------------------*/
 @require './override'
 
-$tipColor = #d86b54
+$tipColor = $glbColor
 
 .prev, .next
   color $accentColor
@@ -261,5 +266,5 @@ div[class*="language-"]:before
 .custom-block.danger 
   color #fff
 .content a code
-  background: #d86f59;
+  background: $scdColor;
   color: #fff;
