@@ -11,11 +11,5 @@ By default, Laraset in not installed to use it you should run `laraset:install` 
 ```bash
 php artisan laraset:install
 ```
-Then `Laraset` Folder will be generated within `app` Folder : 
+Then `Laraset` Folder will be generated within `app` Folder.
 
-![Laraset Architecture](./img/laraset-architecture.png) <br>
-
-:::tip Module Location
-
-By default, all units will be stored  within the  `app/Laraset/units` directory.
-:::
