@@ -1,7 +1,7 @@
 <?php
-define("APP_DIR_NAME",'Laraset');
-define("MOD_DIR_NAME",'modules');
-define("VENDOR_PKG_PATH",'khofaai/laraset');
+define("APP_DIR_NAME", 'Laraset');
+define("MOD_DIR_NAME", 'modules');
+define("VENDOR_PKG_PATH", 'khofaai/laraset');
 
 /**
  * Path to laraset vendor package for given $path
@@ -13,7 +13,7 @@ if (!function_exists('laraset_path')) {
 
     function laraset_path($path = '')
     {
-        return base_path("vendor/${VENDOR_PKG_PATH}/src/${$path}");
+        return base_path("vendor/". VENDOR_PKG_PATH ."/src/${$path}");
     }
 }
 
@@ -26,7 +26,7 @@ if (!function_exists(('laraset_modules'))) {
 
     function laraset_modules()
     {
-        return json_decode(file_get_contents(app_path('Laraset') . '/core.json'), true)['modules'];
+        return json_decode(file_get_contents(app_path(APP_DIR_NAME) . '/core.json'), true)['modules'];
     }
 }
 
@@ -40,7 +40,7 @@ if (!function_exists(('laraset_base'))) {
 
     function laraset_base($path = '')
     {
-        return app_path("${APP_DIR_NAME}" . ( $path != '' ? '/' . $path : '' ) );
+        return app_path( APP_DIR_NAME . ( $path != '' ? '/' . $path : '' ) );
     }
 }
 
@@ -54,7 +54,7 @@ if (!function_exists(('laraset_asset'))) {
 
     function laraset_asset($path = '')
     {
-        return url("app/${APP_DIR_NAME}" . ($path != '' ? '/' . $path : '' ) );
+        return url("app/". APP_DIR_NAME . ($path != '' ? '/' . $path : '' ) );
     }
 }
 
@@ -68,7 +68,7 @@ if (!function_exists('module_exists')) {
 
     function module_exists($module_name)
     {
-        $path = laraset_base("${MOD_DIR_NAME}/${$module_name}");
+        $path = laraset_base( MOD_DIR_NAME . "/${$module_name}");
         return is_dir($path) ? $path : false;
     }
 }
